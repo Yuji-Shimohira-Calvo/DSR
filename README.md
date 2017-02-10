@@ -1,2 +1,2 @@
 # DSR
-This repo contains materials for the course Doing Survey Research (University of Edinburgh) 
+This repository contains teaching materials for the course Doing Survey Research 2017 (University of Edinburgh).
