@@ -1,0 +1,264 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{University of Edinburgh, Doing Survey Research} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge A Brief Stata Cheatsheet \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Yuji Shimohira-Calvo} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	Introduction
+%----------------------------------------------------------------------------------------
+
+\section*{Introduction}
+
+This document is a concise cheatsheet of some basic Stata commands used throughout the course Doing Survey Research at the University of Edinburgh. This document will be updated as you learn more commands in class. Keep in mind that a good programmer is also a ``lazy'' programmer: if you can save 0.5 seconds typing something shorter, do it! That is why this document also tells you the shortest abbreviation for commands in Stata. The underlined bits of a command are the shortest ways to let Stata know which command you want to use (and same things applies to command options). 
+
+%----------------------------------------------------------------------------------------
+%	Commands
+%----------------------------------------------------------------------------------------
+
+\section{Useful commands for exploring a dataset}
+
+\begin{align} 
+\text{\underline{su}mmarize variable(s)}
+\end{align}
+
+The \textit{summarize} command calculates and displays a variety of univariate summary statistics. You can use it without specifying any variable to display the same univariate summary statistics for all variables in the dataset. If you specify one or more variable, \textit{summarize} will only display the summary statistics of those variables.
+
+\begin{align}
+	\text{\underline{de}scribe variable(s)}
+\end{align}
+
+The \textit{describe} command produces a summary of the dataset in memory. Like the \textit{summarize} command, \textit{describe} can be used with or without specifying variable names.
+
+\begin{align}
+	\text{codebook variable(s)}
+\end{align}
+
+The \textit{codebook} command examines the variable names, labels, and data to produce a codebook describing the dataset. This command can be used with or without specifying variables names. A useful option for \textit{codebook} is \textit{\underline{c}ompact}, which displays a compact report on the variables:
+
+\begin{align}
+	\text{codebook variable(s), \underline{c}ompact}
+\end{align}
+
+%------------------------------------------------
+
+\section{Getting some help}
+
+\begin{align}
+	\text{\underline{h}elp command.name} 
+\end{align}
+
+The \textit{help} command displays help information about the specified command or topic. In fact, all the descriptions in this document are copied\&pasted from Stata's help manual. The \text{help} command not only tells you how a command's syntax works, but also it gives you examples on how to use that command you need help with. It also lists all the available command options (like the \textit{nolabel} option for the \textit{tabulate} command). 
+ 
+%------------------------------------------------
+
+\section{Useful commands for univariate and bivariate analysis}
+
+\begin{align}
+	\text{\underline{ta}bulate variable(s)}
+\end{align}
+
+The \textit{\underline{ta}bulate} command produces a one-way (or two-way) table of frequency counts. Two is the maximum number of variables you can use with this command. A useful command option is \textit{\underline{nol}abel}, which displays numeric codes rather than value labels. For example:
+
+\begin{align}
+\text{\underline{ta}bulate variable(s), \underline{nol}abel}
+\end{align}
+
+%------------------------------------------------
+
+\section{Relational and logical operators}
+
+You can use logical operators with many commands. This is useful when you want to look at subsets of your dataset.
+
+\begin{itemize}
+	\item == (equal to).
+	\item != (not equal to).
+	\item > (greater than).
+	\item < (less than).
+	\item >= (greater than or equal to).
+	\item <= (less than or equal to).
+	\item \& (and).
+	\item | (or).
+\end{itemize}
+
+Some examples using the above-mentioned operators are:
+
+\begin{align}
+\text{\underline{ta}bulate variable if variable==10}
+\end{align}
+
+This tabulates only those cases where the variable is 10.
+
+\begin{align}
+\text{\underline{ta}bulate variable if variable>= \& variable<=20}
+\end{align}
+
+This one tabulates those cases between 10 \textbf{and} 20 including both 10 and 20.
+
+\begin{align}
+\text{\underline{ta}bulate variable if variable==10 | variable==20}
+\end{align}
+
+This tabulates only the cases where the variable is 10 \textbf{or} 20 (notice the difference between \textbf{and} and \textbf{or}).
+
+\begin{align}
+\text{\underline{ta}bulate variable if variable!=10}
+\end{align}
+
+This tabulates all cases \textbf{except} for those where the variable is 10.
+
+%----------------------------------------------------------------------------------------
+
+\section{Useful commands for data management}
+
+\begin{align}
+	\text{drop variable(s)}
+\end{align}
+
+The \textit{drop} command eliminates variables or observations from the data in memory. You can also use operators if you want to eliminate only some specific cases. For example:
+
+\begin{align}
+\text{drop if variable==10}
+\end{align}
+
+This would eliminate those cases where the variable is 10. You can get “more fancy” with it if you want to:
+
+\begin{align}
+\text{drop if variable==10 \& variable2==20}
+\end{align}
+
+This one eliminates those cases that satisfy the logical statement where variable is 10, \textbf{and} variable2 is 20. Only cases that are 10 in variable \textbf{and} 20 in variable2 are dropped.
+
+\begin{align}
+\text{\underline{g}enerate newvariable=oldvariable}
+\end{align}
+
+The \textit{\underline{g}enerate} command creates a new variable. The example above duplicates a variable called ``oldvariable'' into a new variable named ``newvariable.'' If you want to create a new ``empty'' variable you do:
+
+\begin{align}
+\text{\underline{g}enerate newvariable=.}
+\end{align}
+
+Mind the period (punctuation mark) above. If you were to tabulate that new variable, Stata will report that ``there are no observations.''
+
+\begin{align}
+\text{\underline{ren}ame oldname newname}
+\end{align}
+
+The \underline{ren}ame command changes the name of an existing variable; the contents of the variable are unchanged. This command has some useful options:
+
+\begin{align}
+\text{\underline{ren}ame variable, \underline{u}pper}
+\end{align}
+
+This option uppercase the target variable.
+
+\begin{align}
+\text{\underline{ren}ame variable, \underline{l}ower}
+\end{align}
+
+This option lowercase the target variable.
+
+\begin{align}
+\text{\underline{ren}ame variable, \underline{p}roper}
+\end{align}
+
+This option capitalises the first letter of the target variable.
+
+With the \textit{\underline{ren}ame} command you can use a ``wildcard'' called ``\_all'' (mind the underscore). For example:
+
+\begin{align}
+\text{\underline{ren}ame \_all, \underline{l}ower}
+\end{align}
+
+With the above you are lowercasing all variables in the dataset with one single line (no need to type all the names, a good programmer is also a ``lazy'' programmer). Speaking of ``laziness'', I personally prefer lowercasing all my variables because that saves me the ``effort'' of clicking shift+letter when typing the names of variables. However, I know of some people who prefer uppercases because it is an ``easier'' way to distinguish variable names in lines of code. Your code, your call.
+
+\begin{align}
+\text{recode variable (rule) (rule2)}
+\end{align}
+
+The \textit{recode} command changes the values of numeric variables according to the rules specified. Values that do not meet any of the conditions of the rules are left unchanged, unless an otherwise rule is specified. Consider the following example:
+
+\begin{align}
+\text{recode variable (0=1) (1=2)}
+\end{align}
+
+With the above you are changing the \textbf{old} numeric value 0 to a \textbf{new} numeric value 1, and the old numeric value 1 to a new numeric value 2. Now, say you have 100 different numeric values in that variable, but you only want to do ``0 to 1'', ``1 to 2'', ``the rest of values to 3.'' You can easily do this in one line of code:
+
+\begin{align}
+\text{recode variable (0=1) (1=2) (else=3)}
+\end{align}
+
+A very useful option for this command is \textit{\underline{g}enerate}. Remember that \textit{\underline{g}enerate} is a command, but in this case it is acting as a command option. Using the example above:
+
+\begin{align}
+\text{recode variable (0=1) (1=2) (else=3), \underline{g}enerate(newvariable)}
+\end{align}
+
+This is useful because you are recoding a variable (i.e., manipulating the dataset) into something more meaningful to you, but at the same time you are keeping the old (original) variable by creating a new variable that contains the transformed values. 
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
