@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[parfill]{parskip}
+\usepackage{fourier}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Proudly \LaTeX}
+\lhead{Doing Survey Research 2018}
+\rfoot{Page \thepage}
+ 
+\begin{document}
+
+\section*{\hfil Lab Worksheet IV \hfil}
+\subsection*{Univariate analysis and graphing}
+
+Today we are going to use data from the ESS 2012 again. You can find the dataset on LEARN; make sure you download \textbf{essuk12v2.dta} (notice the ``v2''). In this lab session we are going to do some basic descriptive statistics, including tabulating and graphing. One of the simplest things in data analysis is reporting descriptive statistics and simple graphs that show a single variable. This is what we call \textbf{univariate analysis}, and it is very useful when trying to summarise and describe data (which in in turn helps finding patterns in the data). In Stata there are multiple ways to look at descriptive statistics. Last week you were introduced to two useful commands: \texttt{describe} and \texttt{codebook}. Today you will use one more: \texttt{summarize}. Let’s take a look at it, try typing
+
+\begin{lstlisting}
+	summarize
+\end{lstlisting} 
+
+and you will see a list of summary statistics for all the variables present in your dataset. This command can be shortened to \texttt{su}, and it allows for a selection of variables like this:
+
+\begin{lstlisting}
+	su gender tvtot
+\end{lstlisting}
+
+In the example above the command \texttt{summarize} only reports on two variables (``gender'' and ``tvtot''). Notice that the command is \texttt{summarize} and not \texttt{summarise}. This command, as you can see, tells you the number of observations, the mean of the variable, the standard deviation, and the minimum and maximum values a variables takes on. Let's now revise the command \texttt{codebook} with an extra option (remember that \texttt{codebook} cannot be shortened):
+
+\begin{lstlisting}
+	codebook gender tvtot, compact
+\end{lstlisting}
+
+As you can see, \texttt{codebook, compact} provides you with similar information (but not the same). In this case you get variable labels and unique values. Also notice that the command option follows a comma, which tells Stata that you have decided to use an option. You can try typing the following to see what the option \texttt{compact} really does:
+
+\begin{lstlisting}
+	codebook gender tvtot
+\end{lstlisting}
+
+The option \texttt{compact} presents you with a shorter report, which you might want if presenting summary statistics to someone else.
+
+\end{document}	

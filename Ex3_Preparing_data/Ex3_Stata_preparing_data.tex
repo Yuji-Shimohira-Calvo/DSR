@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[parfill]{parskip}
+\usepackage{fourier}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Proudly \LaTeX}
+\lhead{Doing Survey Research 2018}
+\rfoot{Page \thepage}
+ 
+\begin{document}
+
+\section*{\hfil Lab Worksheet III \hfil}	
+In this exercise you will use some real data. Download from LEARN the dataset named \textbf{essuk12.dta}, which corresponds to the sixth round of the European Social Survey. This dataset has been simplified for today's tutorial's sake and it comprises information on the UK in 2012. Open the dataset with Stata by clicking on \textbf{File$\to$Open} and select \textbf{essuk12.dta}. You should now see some variables listed down in the \textit{variables window} on the right side of your screen.
+
+Today's task is to do some light data management, which entails:
+
+\begin{itemize}
+	\item Exploring your dataset,
+	\item renaming variables, and
+	\item recoding variables.
+\end{itemize}
+
+\subsection*{Data exploration}
+The command \texttt{\underline{de}scribe}, as its name indicates, describes data in memory or in file. Many commands in Stata can be abbreviated, thus \texttt{describe} can also be used as \texttt{de} (notice how I underlined the shortest abbreviation possible above). You can use this command to describe the entire dataset, or just a selection of variables. For example, if you typed
+
+\begin{lstlisting}
+	describe
+\end{lstlisting}
+
+you would be describing all variables in the dataset. If you wanted to describe only some variables you could type
+
+\begin{lstlisting}
+	de Tvtot Vote Happy
+\end{lstlisting}
+
+and describe only those three variables of interest. You can get more information on \texttt{describe} by using another command:
+
+\begin{lstlisting}
+	help describe
+\end{lstlisting}
+
+The \texttt{help} command opens Stata's manual and shows detailed information on the command you need help with. Remember to consult Stata's manual whenever you are not sure how to use a command. Now try to use \texttt{describe} yourself and answer these questions:
+
+\begin{enumerate}
+	\item How many variables are there in the dataset?
+	\item How many observations does this dataset have?
+	\item What is the difference between ``variable label'' and ``value label''?
+\end{enumerate}
+
+Another useful command is \texttt{codebook} (if you type \texttt{help codebook} you will see that it cannot be abbreviated). This one also describes the contents of a dataset, however it provides you with a more detailed description of the data. Just like \texttt{describe}, you can use \texttt{codebook} on the whole dataset or on a selection of variables of interest. Try the following command and answer the questions:
+
+\begin{lstlisting}
+	codebook Tvtot Gndr Sclmeet
+\end{lstlisting}
+
+\begin{enumerate}
+	\item How many response categories does ``Sclmeet'' have?
+	\item How is ``Gndr'' coded?
+	\item What does ``Tvtot'' measure?
+\end{enumerate}
+
+\subsection*{Renaming variables}
+
+When you download a dataset, variables' names not always make sense. Consider the variable ``Sclmeet''; if you use \texttt{describe} and \texttt{codebook} on this variable you can find what it measures. Let's rename the variable to something else, for example ``Socmeet'' (mind the capital -S). To achieve this type the following:
+
+\begin{lstlisting}
+	rename Sclmeet Socmeet
+\end{lstlisting}
+
+You can use \texttt{help rename} to find out more about the command \texttt{rename} (for instance, it can be abbreviated to \texttt{ren}). Now try to rename the variables in your dataset to the following new names (mind all the capital letters):
+
+\begin{itemize}
+	\item Gndr to Gender.
+	\item Agea to Age.
+	\item Eisced to Education.
+	\item Hinctnta to Houseincome.
+\end{itemize}
+
+Although not mandatory, it is common to specify variable names with lower cases. Right now all your variables start with a capital letter, so if you wanted to change their names you could use the command \texttt{rename} on each variable and change the first letter only. However, this would take quite a while as you would have to repeat the command twelve times. Stata has a way to deal with problems like this one. Instead of typing the same command twelve times try:
+
+\begin{lstlisting}
+	re _all, lower
+\end{lstlisting}
+
+Remember that \texttt{re} stands for \texttt{rename}. Above you used \texttt{\_all} to tell Stata that you would like to modify all variables in the dataset. Notice that now there is a comma in the command. That comma tells Stata that you are going to use a \textit{command option} (pretty much all commands in Stata allow for options, you can find more about these options in the help page of each command). The option \texttt{lower} tells Stata that you want only lower cases.
+
+\subsection*{Recoding variables}
+
+Recoding variables is a fundamental part of analysing data. The command \texttt{recode}, as its name indicates, recodes variables in your dataset. Use \texttt{help} to find out more about its syntax. Let's now try to recode the variable ``gender'', remember how it is coded (you can find out by using \texttt{codebook}). You want to get the following:
+
+\begin{itemize}
+	\item 0 = Male
+	\item 1 = Female
+\end{itemize}
+
+To achieve this you need to type:
+
+\begin{lstlisting}
+	recode gender (1=0) (2=1), generate(gender2) 
+\end{lstlisting}
+
+The command above is telling Stata to recode the variable ``gender'' so the value 1 is now 0 (1=0), and the value 2 is now 1 (2=1). In short, the ``old value'' comes first and then you tell Stata the ``new value.'' However, there is one more thing you need to consider. Recoding variables modifies the data, so it is always a good idea to keep intact the original variable (in this case ``gender''). The command \texttt{recode} allows as a command option another command, in this case the command \texttt{generate} (which can be abbreviated to \texttt{g}, but people usually use it as \texttt{gen}). As you can imagine, \texttt{generate} creates a new variable in your dataset. Above, you recoded the variable ``gender'' and, after recoding it, you created a new variable named ``gender2'' (mind the round brackets).
+
+Now try yourself to recode the variable ``vote'' to (do not forget to generate a new variable):
+
+\begin{itemize}
+	\item 1 = Yes
+	\item 0 = No
+	\item -9 = Everything else
+\end{itemize}
+
+Remember that you can use \texttt{codebook} to find out how a variable is currently coded. After recoding the variable you can run \texttt{codebook} again to see how your new codes look like. You will notice that the new coding does not have appropriate value labels, but luckily you know now how to create and assign value labels!
+
+\end{document}
