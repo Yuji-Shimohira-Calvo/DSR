@@ -1,27 +1,6 @@
-\documentclass{article}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{listings}
-\usepackage[parfill]{parskip}
-\usepackage{fourier}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
-
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{Proudly \LaTeX}
-\lhead{Doing Survey Research 2018}
-\rfoot{Page \thepage}
-
-\newcommand{\forceindent}{\leavevmode{\parindent=2em\indent}}
-
-\begin{document}
-
-\section*{\hfil Lab Worksheet VI \hfil}
+\section{\hfil Lab Worksheet VI \hfil}
 \subsection*{Statistical inference I}
+\addcontentsline{toc}{subsection}{Statistical inference I}
 
 This lab worksheet walks you through the very basic concepts of statistical inference (no need for Stata today, pencil and paper will do). For the purposes of this exercise, it will be very helpful if you already know a bit about the following concepts:
 
@@ -34,7 +13,7 @@ This lab worksheet walks you through the very basic concepts of statistical infe
     \item Normal distribution.
 \end{itemize}
 
-The main learning goals is to understand what inferential statistic is, but we will also look at how we can collect random samples from larger populations as well as how we go about constructing sampling distributions using repeated random samples. \textit{Figure 1} below shows the basic ``statistical procedure.'' As you can see, it has three main components: a \textbf{population} or target group of interest, a \textbf{sample} or sub-group of the target group, and \textbf{probability}, which allows us to say things about the population based on a sample. After collecting a sample, we produce some summaries (i.e., we describe and explore the data). However, this does not really speak of the population but of the observed data in a sample. These observed data might differ from the population, so we rely on probability and inference to draw conclusions. Below \textit{Figure 1} there are some questions for you to answer. 
+The main learning goals is to understand what inferential statistic is, but we will also look at how we can collect random samples from larger populations as well as how we go about constructing sampling distributions using repeated random samples. Figure 1 below shows the basic ``statistical procedure.'' As you can see, it has three main components: a \textbf{population} or target group of interest, a \textbf{sample} or sub-group of the target group, and \textbf{probability}, which allows us to say things about the population based on a sample. After collecting a sample, we produce some summaries (i.e., we describe and explore the data). However, this does not really speak of the population but of the observed data in a sample. These observed data might differ from the population, so we rely on probability and inference to draw conclusions. Below Figure 1 there are some questions for you to answer. 
 
 \tikzstyle{population} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
 \tikzstyle{sample} = [trapezium, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!30]
@@ -228,5 +207,3 @@ Finally we can use the arithmetic mean to create the sampling distribution (of t
 		\textbf{40}                     & 7                  & \textbf{80}                     & 5                  &                               &                              
 	\end{tabular}
 \end{table}
-
-\end{document}

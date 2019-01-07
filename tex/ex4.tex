@@ -1,25 +1,6 @@
-\documentclass{article}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{listings}
-\usepackage[parfill]{parskip}
-\usepackage{fourier}
-
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{Proudly \LaTeX}
-\lhead{Doing Survey Research 2018}
-\rfoot{Page \thepage}
-
-\newcommand{\forceindent}{\leavevmode{\parindent=2em\indent}}
- 
-\begin{document}
-
-\section*{\hfil Lab Worksheet IV \hfil}
+\section{\hfil Lab Worksheet IV \hfil}
 \subsection*{Univariate analysis and graphing}
+\addcontentsline{toc}{subsection}{Univariate analysis and graphing}
 
 Today we are going to use data from the ESS 2012 again. You can find the dataset on LEARN; make sure you download \textbf{essuk12v2.dta} (notice the ``v2''). In this lab session we are going to do some basic descriptive statistics, including tabulating and graphing. One of the simplest things in data analysis is reporting descriptive statistics and simple graphs that show a single variable. This is what we call \textbf{univariate analysis}, and it is very useful when trying to summarise and describe data (which in in turn helps finding patterns in the data). In Stata there are multiple ways to look at descriptive statistics. Last week you were introduced to two useful commands: \texttt{describe} and \texttt{codebook}. Today you will use one more: \texttt{summarize}. Let’s take a look at it, try typing
 
@@ -127,9 +108,6 @@ Producing graphs is an extremely powerful (and useful) way of examining your dat
 Let's make the plot a bit more attractive. Go to the \textbf{Slices} tab and select \textit{Customize all slice properties}. Then click on \textit{Slice properties (all)}, tick \textit{Explode slide} and in the drop-down menu select \textit{Automatic}. In the same window, select \textit{Customize all slice labels} and click on \textit{Label properties (all)}. In \textit{Label type} select \textit{Percent}. Now click on \textit{OK} and submit your graph. Stata reports the command for all this clicking and pointing in the results-window. You can use that command to reproduce the exact same graph granted that the variable ``tvtot'' remains the same.
 
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{Graphics_pie.jpg}
+	\includegraphics[width=\linewidth]{./img/graphics_pie.jpg}
 	\caption{Stata's Graphics > Pie chart.}
 \end{figure}
-
-
-\end{document}	

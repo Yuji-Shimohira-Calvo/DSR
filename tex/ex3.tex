@@ -1,21 +1,7 @@
-\documentclass{article}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{listings}
-\usepackage[parfill]{parskip}
-\usepackage{fourier}
-
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{Proudly \LaTeX}
-\lhead{Doing Survey Research 2018}
-\rfoot{Page \thepage}
- 
-\begin{document}
-
-\section*{\hfil Lab Worksheet III \hfil}	
+\section{\hfil Lab Worksheet III \hfil}
+\subsection*{Preparing data}
+\addcontentsline{toc}{subsection}{Preparing data}
+	
 In this exercise you will use some real data. Download from LEARN the dataset named \textbf{essuk12.dta}, which corresponds to the sixth round of the European Social Survey. This dataset has been simplified for today's tutorial's sake and it comprises information on the UK in 2012. Open the dataset with Stata by clicking on \textbf{File$\to$Open} and select \textbf{essuk12.dta}. You should now see some variables listed down in the \textit{variables window} on the right side of your screen.
 
 Today's task is to do some light data management, which entails:
@@ -116,5 +102,3 @@ Now try yourself to recode the variable ``vote'' to (do not forget to generate a
 \end{itemize}
 
 Remember that you can use \texttt{codebook} to find out how a variable is currently coded. After recoding the variable you can run \texttt{codebook} again to see how your new codes look like. You will notice that the new coding does not have appropriate value labels, but luckily you know now how to create and assign value labels!
-
-\end{document}

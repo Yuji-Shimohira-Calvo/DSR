@@ -1,0 +1,105 @@
+%---------------------------
+%	INTRODUCTION
+%---------------------------
+
+% This is the root file for the course exercises of Doing Survey Research at the University of Edinburgh.
+% Each lab exercise is written in a separate .tex file called in by this root file.
+% For more information please read the README document in the repository's root directory: https://github.com/Yuji-Shimohira-Calvo/DSR/blob/master/README.md
+% All exercises have been written by Yuji Shimohira-Calvo using freely available materials and datasets.
+% This project is under a Creative Commons Attribution Share Alike 4.0 International license: https://github.com/Yuji-Shimohira-Calvo/DSR/blob/master/LICENSE.md
+% This project was made in good faith. I am no lawyer, so if you notice a potential legal problem with anything in these teaching materials, please email me at: Y.Shimohira@ed.ac.uk
+
+%---------------------------
+%	PREAMBLE
+%---------------------------
+
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fourier}
+\usepackage{fancyhdr}
+\usepackage[parfill]{parskip}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{fourier}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{textcomp}
+
+\newcommand{\forceindent}{\leavevmode{\parindent=2em\indent}}
+
+%------------------------%------------------------%
+
+\begin{document}
+
+%---------------------------
+%	COVER PAGE
+%---------------------------
+
+\include{./coverpage}
+\thispagestyle{empty}
+\printtitle
+\vfill
+\printauthor
+
+%---------------------------
+%	TOC
+%---------------------------
+
+\clearpage
+\thispagestyle{empty}
+\tableofcontents
+
+%---------------------------
+%	EXERCISES
+%---------------------------
+
+\clearpage
+\setcounter{page}{1}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Doing Survey Research \the\year}
+%\lhead{}
+\rfoot{Page \thepage}
+
+%------------------------%------------------------%
+% Exercise 1
+\include{./tex/ex1}
+%------------------------%------------------------%
+% Exercise 2
+\setcounter{figure}{0}
+\include{./tex/ex2}
+%------------------------%------------------------%
+% Exercise 3
+\setcounter{figure}{0}
+\include{./tex/ex3}
+%------------------------%------------------------%
+% Exercise 4
+\setcounter{figure}{0}
+\include{./tex/ex4}
+%------------------------%------------------------%
+% Exercise 5
+\setcounter{figure}{0}
+\include{./tex/ex5}
+%------------------------%------------------------%
+% Exercise 6
+\setcounter{figure}{0}
+\include{./tex/ex6}
+%------------------------%------------------------%
+% Exercise 7
+\setcounter{figure}{0}
+\include{./tex/ex7}
+%------------------------%------------------------%
+% Exercise 8
+\setcounter{figure}{0}
+\include{./tex/ex8}
+%------------------------%------------------------%
+% Exercise 9
+\setcounter{figure}{0}
+\include{./tex/ex9}
+%------------------------%------------------------%
+
+\end{document}

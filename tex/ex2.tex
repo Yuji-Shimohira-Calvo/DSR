@@ -1,28 +1,11 @@
-\documentclass{article}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{listings}
-\usepackage[parfill]{parskip}
-\usepackage{fourier}
-
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{Proudly \LaTeX}
-\lhead{Doing Survey Research 2018}
-\rfoot{Page \thepage}
- 
-\begin{document}
- 
-\section*{\hfil Lab Worksheet II \hfil}
+\section{\hfil Lab Worksheet II \hfil}
 \subsection*{Stata's interface}
+\addcontentsline{toc}{subsection}{Stata's interface}
 
 This is probably the first time you use Stata. As described in their own website, ``Stata is a complete, integrated statistics package that provides everything you need for data analysis, data management, and graphics.''
  
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{Stata_Interface.png}
+	\includegraphics[width=\linewidth]{./img/stata_interface.png}
 	\caption{Stata's interface.}
 \end{figure}
 
@@ -75,7 +58,7 @@ The variable ``Location'' has the following four categories: Scotland = 1, North
 You need to think of suitable \textbf{variable names}, \textbf{variable labels}, and \textbf{value labels}. Keep in mind that is customary, but not mandatory, to name variables with small letters. Stata accepts both upper cases and lower cases, but it is case sensitive! Also, variable names cannot contain spaces and the use of underscores is customary when signalising spaces. After thinking of some variable names, open up the data editor by clicking on the icon with a pencil over a spreadsheet (see Figure 2). Stata's data editor resembles very much Excel. Your ``spreadsheet'' should be empty, but if it was not you could type \texttt{clear all} in the command window to get rid of previous data.
 
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{Stata_Data_Editor_Blank.JPG}
+	\includegraphics[width=\linewidth]{./img/stata_data_editor_blank.jpg}
 	\caption{Stata's data editor.}
 \end{figure}
 
@@ -92,12 +75,10 @@ Now that you have assigned names and labels to all your variables, you are going
 In the command above, \texttt{tabulate} creates a tabulation of a variable named ``gender.'' If you did not name your variable ``gender'', you will have to substitute in your variable's name instead of ``gender.'' In the results window you can see now a table with two categories: 0 and 1. You know that 0 = Male and 1 = Female, but when you report these results you want your readers to know exactly what is going on. Changing 0 to ``Male'' and 1 to ``Female'' is what you do when you assign \textbf{value labels} to your vice-chancellor's gender variable.
 
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{Stata_Variables_Manager.JPG}
+	\includegraphics[width=\linewidth]{./img/stata_variables_manager.jpg}
 	\caption{Stata's variables manager.}
 \end{figure}
 
 To assign value labels you need to exit the data editor and open the \textit{variables manager}. This can be accessed by clicking on the icon with a spreadsheet. Once the variables manager shows up (see Figure 3 for the generic, blank window) you need to create first a set of value labels which you will be attaching to a specific variable later on. Click on \textbf{Manage...} (situated on the right side of the window). In the new window click on \textbf{Create Label}. Yet a new window named \textbf{Create Label} will appear on screen. Give to your new set of value labels a name (in the \textbf{Label name} box). It is best if you name it with something that resembles the name of the variable you are modifying. For example, if you created a variable named ``location'' for the geographical location of universities you can name your set of value labels as ``locationlab'' or ``locationl.'' Keep in mind that sets of value labels cannot use variable names. Now type in the box named \textbf{Value} the original value you gave to your variable (i.e., 0 = Male, so you would type ``0'' here) and in the \textbf{Label} box type its new label (i.e., ``Male''). Then click on \textbf{Add} and repeat the process for 1 = Female. Once this is done click on \textbf{OK}.
 
 Now that you have a set of value labels, the last thing you need to do is attach that set to the original variable. For this, go back to the variables manager window (Figure 3), select the variable at stake, and click on the down arrow located to the right of \textbf{Value Label}. A dropdown menu in which you can select the appropriate set of value labels will appear. Finally, click on \textbf{Apply}. If you use the \texttt{tabulate} command again you will see that your tabulation, this time, reports ``Female'' and ``Male'' instead of 1 and 0. Well done!
-
-\end{document}

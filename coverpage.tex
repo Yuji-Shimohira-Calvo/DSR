@@ -1,0 +1,43 @@
+%---------------------------
+%	RULES
+%---------------------------
+
+\newcommand{\horule}[1]{\rule{\linewidth}{#1}}
+
+%---------------------------
+%	TITLE
+%---------------------------
+
+\makeatletter
+\def\printtitle{
+	{\centering \@title \par}}
+\makeatother
+
+%---------------------------
+%	AUTHOR
+%---------------------------
+
+\makeatletter
+\def\printauthor{
+	{\centering \large \@author}}
+\makeatother
+
+%---------------------------
+%	COVER PAGE
+%---------------------------
+
+\title{\textsc{Nine sessions to introduce you to Stata\textregistered}
+	\\ [1.0cm]
+	\horule{0.5pt} \\ [0.5cm]
+	\LARGE \textbf{\uppercase{Doing Survey Research \\ Lab Exercises}}
+	\horule{2pt} \\ [1.0cm]
+	\normalsize Printed version: \today \\
+	\normalsize GitHub repository: \texttt{https://github.com/Yuji-Shimohira-Calvo/DSR}
+}
+
+\author{
+	Yuji Shimohira-Calvo \\
+	University of Edinburgh \\
+	Department of Sociology \\
+	\texttt{y.shimohira@ed.ac.uk} \\
+}

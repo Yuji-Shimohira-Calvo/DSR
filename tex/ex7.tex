@@ -1,27 +1,6 @@
-\documentclass{article}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{listings}
-\usepackage[parfill]{parskip}
-\usepackage{fourier}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
-
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{Proudly \LaTeX}
-\lhead{Doing Survey Research 2018}
-\rfoot{Page \thepage}
-
-\newcommand{\forceindent}{\leavevmode{\parindent=2em\indent}}
-
-\begin{document}
-
-\section*{\hfil Lab Worksheet VII \hfil}
+\section{\hfil Lab Worksheet VII \hfil}
 \subsection*{Statistical inference II}
+\addcontentsline{toc}{subsection}{Statistical inference II}
 
 This worksheet revises the concepts that you already know about statistical inference (if you need a reminder check \textit{Lab Worksheet VI: Statistical inference I} and the pertinent lecture-slides). You will not need to use Stata for the exercises below. All exercises start with a question mark. 
 
@@ -50,7 +29,7 @@ This worksheet revises the concepts that you already know about statistical infe
 \forceindent \textbf{?} Can you complete the blank spaces in the figure below?
 
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{Gaussian_distribution.jpg}
+	\includegraphics[width=\linewidth]{./img/gaussian_distribution.jpg}
 \end{figure}
 
 \forceindent \textbf{?} How is the distribution depicted above called? What theorem makes it useful for data analysis?
@@ -88,6 +67,3 @@ You can use the above formula to compute any confidence interval. The suffix $\a
 \forceindent \textbf{?} The coffee machine of your university's cafeteria is set up in such way that the average content of a cup of coffee equals a quantity $\mu$. Who knows why but you decided to construct a random sample of 200 cups of coffee. This resulted in an average content of 34cl. Assume your standard deviation was of 6cl. Can you find two confidence intervals one for 90 percent and another for 99 percent?
 
 \framebox(347,150){}
-
-
-\end{document}
