@@ -1,0 +1,242 @@
+%---------------------------
+%	PREAMBLE
+%---------------------------
+
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fourier}
+\usepackage{fancyhdr}
+\usepackage[parfill]{parskip}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{fourier}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{textcomp}
+
+\newcommand{\forceindent}{\leavevmode{\parindent=2em\indent}}
+
+%------------------------%------------------------%
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Doing Survey Research \the\year}
+\lhead{https://github.com/Yuji-Shimohira-Calvo/DSR}
+\rfoot{Page \thepage}
+
+\section*{\hfil Lab Worksheet VI \hfil}
+\subsection*{Statistical inference I}
+
+This lab worksheet walks you through the very basic concepts of statistical inference (no need for Stata today, pencil and paper will do). For the purposes of this exercise, it will be very helpful if you already know a bit about the following concepts:
+
+\begin{itemize}
+	\item Population.
+	\item Sample.
+	\item Sample statistic.
+	\item Sampling distribution.
+	\item Central Limit Theorem.
+	\item Normal distribution.
+\end{itemize}
+
+The main learning goals is to understand what inferential statistic is, but we will also look at how we can collect random samples from larger populations as well as how we go about constructing sampling distributions using repeated random samples. Figure 1 below shows the basic ``statistical procedure.'' As you can see, it has three main components: a \textbf{population} or target group of interest, a \textbf{sample} or sub-group of the target group, and \textbf{probability}, which allows us to say things about the population based on a sample. After collecting a sample, we produce some summaries (i.e., we describe and explore the data). However, this does not really speak of the population but of the observed data in a sample. These observed data might differ from the population, so we rely on probability and inference to draw conclusions. Below Figure 1 there are some questions for you to answer. 
+
+\tikzstyle{population} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{sample} = [trapezium, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!30]
+\tikzstyle{probability} = [circle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=4cm]
+	
+	\node (pop) [population] {Population};
+	\node (samp) [sample, below of=pop] {Sample};
+	\node (prob) [probability, right of=samp, xshift=4cm] {Probability};
+	
+	\draw [arrow] (pop) -- node[anchor=east]{Data collection} (samp);
+	\draw [arrow, dashed] (samp) -- node[anchor=north]{Descriptive statistics} (prob);
+	\draw [arrow, dashed] (prob) -- node[anchor=west, xshift=0.2cm]{Statistical inference} (pop);
+	
+	\end{tikzpicture}
+	\caption{Doing statistics.}
+\end{figure}
+
+\forceindent \textbf{?} Provide some examples of populations and samples in the box below.
+
+\framebox(347,100){}
+
+\forceindent \textbf{?} Might the following samples (simple random sampling) be representative?
+
+\noindent\fbox{%
+	\parbox{\textwidth}{%
+		\textbf{Target population:}
+		
+		Lawyers in Greater London area.
+		
+		\textbf{Sampling and sample:}
+		
+		All lawyers working in the Greater London area are assigned an X-digit identification number. 500 lawyers are selected at random by using a random-number generator.
+		
+		\textbf{How this sample could have been non-representative:}
+		
+		This samples would not be representative if only lawyers with a British passport had been selected (presumably there are lawyers with non-British passports working in the Greater London area).
+	}%
+}
+
+\noindent\fbox{%
+	\parbox{\textwidth}{%
+		\textbf{Target population:}
+		
+		University students studying in Scotland.
+		
+		\textbf{Sampling and sample:}
+		
+		Using Scottish universities' student records, a random sample of 1,000 students was pooled. This sample was designed to comprise students older than eighteen and younger or equal than twenty-four. All nationalities, ethnic groups, and sexes were included. 
+		
+		\textbf{Is this sample representative? Why/why not? How could it be representative?}
+		\newline
+		\newline
+		\newline
+		\newline
+	}%
+}
+
+\noindent\fbox{%
+	\parbox{\textwidth}{%
+		\textbf{Target population:}
+		
+		University students studying in Scotland.
+		
+		\textbf{Sampling and sample:}
+		
+		50 interviewers were hired in order to interview university students from all Scottish universities. Interviewers were sent to the field only on odd working calendar-days. Data collection was ended after obtaining 1,000 completed questionnaires.  
+		
+		\textbf{Is this sample representative? Why/why not? How could it be representative?}
+		\newline
+		\newline
+		\newline
+		\newline
+	}%
+}
+
+\noindent\fbox{%
+	\parbox{\textwidth}{%
+		\textbf{Target population:}
+		
+		University students studying in Scotland.
+		
+		\textbf{Sampling and sample:}
+		
+		Researchers gather a comprehensive list of university students in Scotland. Students are grouped into ``male'' and``female'' categories. Conveniently, 60 percent of university students in Scotland are female. Therefore, the researchers select at random 600 female students and 400 male students.
+		
+		\textbf{Is this sample representative? Why/why not? How could it be representative?}
+		\newline
+		\newline
+		\newline
+		\newline
+	}%
+}
+
+Next we are going to construct a sample using simple random sampling. For this, we will use real data from the European Social Survey 2012, but this time we will only focus on respondents from Scotland. On the last page of this worksheet you will find a table with 100 self-reported happiness levels. Happiness was measured from 0 to 10 (being 10 the happiest one can be). Our task is to construct a sample of 15 individuals, so:
+
+\forceindent \textbf{?} What is the value of \textit{N}? And the value of \textit{n}?
+
+\framebox(347,30){}
+
+\forceindent \textbf{?} How would you chose a random sample of 15 individuals from \textit{Table 1}?
+
+\framebox(347,60){}
+
+One ``manual'' way to construct a random sample involves using a table of random numbers. The numbers in the table below were placed in a random order by a computer, so technically is not purely random (but it is good enough for our exercise). We need to use this table of random numbers to chose 15 individuals from \textit{Table 1} that reports happiness levels in Scotland. First we must devise a ``path'' or ``method'', for example: ``two to the right, one down, one left, one up, two left, two up, and repeat'' (it can be easier, of course). Now we place a finger randomly on the table and simply follow our ``path.'' The figure we end up on will be our first sampled individual. Finally we repeat this procedure as many times as necessary.
+
+\forceindent \textbf{?} Annotate below the 15 respondents' ID and their happiness levels.
+
+\framebox(347,47){} 
+
+\noindent\fbox{%
+	\parbox{\textwidth}{%
+		056 034 074 055 037 064 084 051 050 026 026 078 095 019 073 011 071 017 052 075 052 047 035 071 065 009 077 098 009 002 024 057 059 100 003 021 067 030 087 017 079 091 028 044 024 085 075 077 073 083 054 041 054 013 064 036 067 074 080 064 012 068 027 096 088 066 005 087 069 096 016 083 082 057 031 083 026 050 078 042 076 049 057 006 084 079 067 002 096 040 082 030 041 033 056 062 090 032 034 053 072 062 018 048 084 023 060 049 029 090 007 008 005 015 086 072 086 044 069 068 099 006 011 095 043 073 058 028 093 097 037 092 001 027 047 088 014 089 063 015 058 056 010 074 007 080 088 038 089 010 099 034 028 072 014 061 046 038 061 094 022 063 040 058 003 093 050 053 016 055 065 081 060 021 039 040 037 046 091 004 018 076 001 100 031 038 043 027 075 004 090 059 025 029 069 024 032 059 052 019 045 094 094 047 063 087 041 079 039 085 020 070 020 042 030 065 033 077 046 066 078 070 093 025 054 068 071 089 035 025 081 085 048 060 097 012 092 053 044 045 042 051 022 036 049 081 033 031 062 043 048 032 080 036 095 091 056 034 074 055 037 064 084 051 050 026 026 078 095 019 073 011 071 017 052 075 052 047 035 071 065 009 077 098 009 002 024 057 059 100 003 021 067 030 087 017 079 091 028 044 024 085 075 077 073 083 054 041 054 013 064 036 067 074 080 064 012 068 027 096 088 066 005 087 069 096 016 083 082 057 031 083 026 050 078 042 076 049 057 006 084 079 067 002 096 040 082 030 041 033 056 062 090 032 034 053 072 062 018 048 084 023 060 049 029 090 007 008 005 015 086 072 086 044 069 068 099 006 011 095 043 073 058 028 093 097 037 092 001 027 047 088 014 089 063 015 058 056 010 074 007 080 088 038 089 010 099 034 028 072 014 061 046 038 061 094 022 063 040 058 003 093 050 053 016 055 065 081 060 021 039 040 037 046 091 004 018 076 001 100 031 038 043 027 075 004 090 059 025 029 069 024 032 059 052 019 045 094 094 047 063 087 041 079 039 085 020 070 020 042 030 065 033 077 046 066 078 070 093 025 054 068 071 089 035 025 081 085 048 060 097 012 092 053 044 045 042 051 022 036 049 081 033 031 062 043 048 032 080 036 095 091 056 034 074 055 064 091 011 077 077 052 052 005 021 045 099 037 097 044 078 001 079 074 062 097 091 035 004 024 036 028 051 083 085 027 
+	}%
+}
+
+We could have calculated the average happiness level using all 100 respondents. However, this would take us more time (although it is easily doable) than sampling 15 individuals and calculating the average happiness. The formula below is how you calculate a mean (use the box below for your computation):
+
+\begin{center}
+	\scalebox{2}{$\overline{x} = \frac{1}{n} \left(\sum\limits_{i=1}^n x_i\right)$}
+\end{center}
+
+\framebox(347,120){} 
+
+With the arithmetic mean you can calculate now the standard deviation as follow:
+
+\begin{center}
+	\scalebox{2}{$s = \sqrt{\frac{\sum\limits_{i=1}^n (x_i - \overline{x})^2}{n-1}}$}
+\end{center}
+
+\framebox(347,200){} 
+
+In turn, with the standard deviation we can calculate the standard error:
+
+\begin{center}
+	\scalebox{2.5}{$s_{\overline{x}} = \frac{s}{\sqrt{n}}$}
+\end{center}
+
+\framebox(347,40){} 
+
+Finally we can use the arithmetic mean to create the sampling distribution (of the mean). If we were to repeat the process above 10 times (i.e., if we constructed 10 samples of 15 individuals each) and graph their means (10 means) we would get a graph that might not look ``normally distributed.'' However, if we repeated this 1,000 times the graph will look ``more normal'' (and the more samples you draw, the ``more normal'' your distribution would look like). However, remember that we created a sample of 15 individuals; we probably need a bigger sample size (about 25) to obtain a ``normal'' distribution. There are online applications that recreate this process, but if you have time you can try it yourself ``manually.''
+
+\begin{table}[]
+	\centering
+	\caption{Happiness in Scotland, 2012}
+	\begin{tabular}{cccccc}
+		\textbf{ID}                     & \textbf{Happiness} & \textbf{ID}                     & \textbf{Happiness} & \textbf{ID}                   & \textbf{Happiness}            \\
+		\textbf{01}                     & 8                  & \textbf{41}                     & 7                  & \textbf{81}                   & 8                             \\
+		\textbf{02}                     & 9                  & \textbf{42}                     & 8                  & \textbf{82}                   & 7                             \\
+		\textbf{03}                     & 6                  & \textbf{43}                     & 9                  & \textbf{83}                   & 8                             \\
+		\textbf{04}                     & 7                  & \textbf{44}                     & 10                 & \textbf{84}                   & 9                             \\
+		\textbf{05}                     & 5                  & \textbf{45}                     & 8                  & \textbf{85}                   & 6                             \\
+		\textbf{06}                     & 10                 & \textbf{46}                     & 5                  & \textbf{86}                   & 7                             \\
+		\textbf{07}                     & 9                  & \textbf{47}                     & 9                  & \textbf{87}                   & 6                             \\
+		\textbf{08}                     & 8                  & \textbf{48}                     & 6                  & \textbf{88}                   & 7                             \\
+		\textbf{09}                     & 8                  & \textbf{49}                     & 8                  & \textbf{89}                   & 10                            \\
+		\textbf{10}                     & 1                  & \textbf{50}                     & 9                  & \textbf{90}                   & 10                            \\
+		\multicolumn{1}{l}{\textbf{11}} & 7                  & \multicolumn{1}{l}{\textbf{51}} & 7                  & \textbf{91}                   & 9                             \\
+		\multicolumn{1}{l}{\textbf{12}} & 4                  & \multicolumn{1}{l}{\textbf{52}} & 8                  & \textbf{92}                   & 7                             \\
+		\multicolumn{1}{l}{\textbf{13}} & 8                  & \multicolumn{1}{l}{\textbf{53}} & 10                 & \textbf{93}                   & 7                             \\
+		\multicolumn{1}{l}{\textbf{14}} & 7                  & \multicolumn{1}{l}{\textbf{54}} & 9                  & \textbf{94}                   & 10                            \\
+		\multicolumn{1}{l}{\textbf{15}} & 8                  & \multicolumn{1}{l}{\textbf{55}} & 8                  & \textbf{95}                   & 9                             \\
+		\multicolumn{1}{l}{\textbf{16}} & 10                 & \multicolumn{1}{l}{\textbf{56}} & 8                  & \textbf{96}                   & 8                             \\
+		\multicolumn{1}{l}{\textbf{17}} & 8                  & \multicolumn{1}{l}{\textbf{57}} & 9                  & \textbf{97}                   & 8                             \\
+		\multicolumn{1}{l}{\textbf{18}} & 8                  & \multicolumn{1}{l}{\textbf{58}} & 9                  & \textbf{98}                   & 5                             \\
+		\multicolumn{1}{l}{\textbf{19}} & 9                  & \multicolumn{1}{l}{\textbf{59}} & 8                  & \textbf{99}                   & 8                             \\
+		\multicolumn{1}{l}{\textbf{20}} & 8                  & \multicolumn{1}{l}{\textbf{60}} & 7                  & \textbf{100}                  & 8                             \\
+		\multicolumn{1}{l}{\textbf{21}} & 9                  & \multicolumn{1}{l}{\textbf{61}} & 9                  & \multicolumn{1}{l}{\textbf{}} & \multicolumn{1}{l}{\textbf{}} \\
+		\multicolumn{1}{l}{\textbf{22}} & 9                  & \multicolumn{1}{l}{\textbf{62}} & 10                 & \multicolumn{1}{l}{\textbf{}} & \multicolumn{1}{l}{\textbf{}} \\
+		\textbf{23}                     & 8                  & \textbf{63}                     & 7                  &                               &                               \\
+		\textbf{24}                     & 8                  & \textbf{64}                     & 8                  &                               &                               \\
+		\textbf{25}                     & 8                  & \textbf{65}                     & 9                  &                               &                               \\
+		\textbf{26}                     & 8                  & \textbf{66}                     & 10                 &                               &                               \\
+		\textbf{27}                     & 9                  & \textbf{67}                     & 9                  &                               &                               \\
+		\textbf{28}                     & 10                 & \textbf{68}                     & 10                 &                               &                               \\
+		\textbf{29}                     & 8                  & \textbf{69}                     & 9                  &                               &                               \\
+		\textbf{30}                     & 9                  & \textbf{70}                     & 8                  &                               &                               \\
+		\textbf{31}                     & 7                  & \textbf{71}                     & 6                  &                               &                               \\
+		\textbf{32}                     & 9                  & \textbf{72}                     & 10                 &                               &                               \\
+		\textbf{33}                     & 8                  & \textbf{73}                     & 10                 &                               &                               \\
+		\textbf{34}                     & 9                  & \textbf{74}                     & 8                  &                               &                               \\
+		\textbf{35}                     & 4                  & \textbf{75}                     & 10                 &                               &                               \\
+		\textbf{36}                     & 8                  & \textbf{76}                     & 10                 &                               &                               \\
+		\textbf{37}                     & 7                  & \textbf{77}                     & 8                  &                               &                               \\
+		\textbf{38}                     & 9                  & \textbf{78}                     & 8                  &                               &                               \\
+		\textbf{39}                     & 6                  & \textbf{79}                     & 9                  &                               &                               \\
+		\textbf{40}                     & 7                  & \textbf{80}                     & 5                  &                               &                              
+	\end{tabular}
+\end{table}
+
+\end{document}
