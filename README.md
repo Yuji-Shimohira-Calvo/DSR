@@ -6,7 +6,7 @@ This repository contains all teaching materials (lab sessions) for the course Do
 
 The main document is named [root](https://github.com/Yuji-Shimohira-Calvo/DSR/blob/master/root.tex), so is the [PDF version](https://github.com/Yuji-Shimohira-Calvo/DSR/blob/master/root.pdf). Since everything goes the modular way, the [cover page](https://github.com/Yuji-Shimohira-Calvo/DSR/blob/master/coverpage.tex) has its own separate file too.
 
-At the time of writing, the only way to compile each lab session is from the root file. In the future, I intend to make this easier, so each sessions can be compiled without having to process the whole booklet.
+You can compile the whole booklet using the root file, or you can use the tex files in the folder [individuals](https://github.com/Yuji-Shimohira-Calvo/DSR/tree/master/individuals) to compile each lab session separately without a coverpage.
 
 There is also a "cheatsheet" that gathers some basic Stata commands used throughout the exercises. This too has its [own directory in the repository](https://github.com/Yuji-Shimohira-Calvo/DSR/tree/master/Stata_cheatsheet).
 
