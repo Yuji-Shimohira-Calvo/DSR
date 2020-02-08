@@ -1,3 +1,7 @@
+# Update note
+
+I no longer update this repository. I have moved the project to GitLab, where it will be updated when necessary: https://gitlab.com/Yuji_Shimohira_Calvo/DSR
+
 # Doing Survey Research (University of Edinburgh)
 I have been the senior tutor of Doing Survey Research since the academic course 2015-2016. Originally, I put together ten separate exercises that introduced Sociology (and other fields) third-year students to Stata. Over the years, simply by repetition and thanks to some informal feedback during lab sessions, I have been modifying the exercises, changing the datasets, making the examples clearer and more approachable. The result is a nine-lesson introduction to Stata that tries to be as friendly and easy as possible. The intended audience of this project is social science students that have no prior knowledge of Stata, programming, and the like. However, some basic statistical knowledge is supposed, for these exercises are a practical, hands-on complement to course lectures. 
 
